@@ -10,15 +10,18 @@ html, body {
 }
 
 .name {
-    width: 100px;
+    width: 90px;
+    font-size: 20px;
 }
 
 .round {
-    width: 10px;
+    width: 20px;
+    font-size: 20px;
 }
 
 .individual {
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
 input {
@@ -29,72 +32,85 @@ input {
 
 #add {
     margin: 20px;
+    font-size: 20px;
 }
 
-    #container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        height: 100%;
-    }
+#container {
+    background-image: url("./background.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    height: 100%;
+}
 
-    #card {
-        width: 450px;
-        height: 350px;
-        background-color: #ccc;
-        padding: 12px;
-        text-align: center;
-        box-shadow: 10px 10px;
-        border-radius: 0px 20px 20px 0px;
-    }
-    
-    #players {
-        width: 250px;
-        height: 350px;
-        border: 1px dashed #ccc;
-        padding: 11px;
-        overflow-y: scroll;
-    }
-    
-    #timer {
-        width: 50px;
-        height: 350px;
-        background-color: #000;
-        padding: 12px;
-        z-index: -1;
-        margin-left: -15px;
-        box-shadow: 0px 10px;
-    }
-    
-    button {
-        cursor: pointer;
-        padding: 8px 16px;
-        background-color: #fff;
-        border: none;
-        font-size: 15px;
-        width: auto;
-        height: auto;
-        display: inline-block;
-        border-radius: 10px;
-    }
-    
-    #sentence {
-        font-size: 30px;
-        margin-bottom: 25px;
-    }
-    
-    #theme {
-        font-size: 18px;
-        margin-bottom: 50px;
-    }
-    
-    #title {
-        font-size: 20px;
-        margin-bottom: 80px;
-        text-align: right;
-        margin-right: 5px;
-    }
+#inner-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height:135%;
+}
+
+#card {
+    width: 450px;
+    height: 350px;
+    background-color: #ffffff;
+    padding: 50px;
+    margin-left: 6%;
+    text-align: center;
+    border-radius: 20px 20px 20px 20px;
+}
+
+#players {
+    width: 250px;
+    height: 350px;
+    background-color: #ffffff;
+    padding: 50px;
+    margin-left: 24%;
+    overflow-y: scroll;
+    border-radius: 20px 20px 20px 20px;
+}
+
+#timer {
+    width: 50px;
+    height: 350px;
+    padding: 12px;
+    z-index: -1;
+    margin-left: -15px;
+    box-shadow: 0px 10px;
+}
+
+button {
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    border: 1px solid #bad133;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+button:hover { 
+  background-color: #bad133;
+}
+
+#sentence {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+#theme {
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+#title {
+    font-size: 20px;
+    margin-bottom: 80px;
+    text-align: right;
+    margin-right: 5px;
+}
     
     
 </style>
@@ -116,7 +132,31 @@ input {
     "We blended colors using _____.",
     "I let my dog borrow my _____ to _____.",
     "The fastest way to _____ is to _____.",
-    "I have to confess that I _____ while _____."
+    "I have to confess that I _____ while _____.",
+    "The name of Elon Musk’s next child: _____.",
+    "In addition to the pandemic and wildfires, the next 2020 phenomenon will be _____.",
+    "SHOCKING: This 23-year-old became a new homeowner by ____.",
+    "Going back in time to prank myself by _____.",
+    "This could be us, but you _____.",
+    "Who would win: 20 feral raccoons or _____?",
+    "Siri, where’s the nearest _____?",
+    "If you or a loved one was diagnosed with Mesothelioma you may be entitled to _____.",
+    "To be fair, you have to have a very high IQ to _____.",
+    "As MTL’s successor, I promise that Stanford will be ____ in the future.",
+    "Hey YouTube, welcome to my channel. As always don’t forget to like, subscribe, and ______.",
+    "I’ve gotta keep it real with you: ______ is not the solution to world hunger.",
+    "The sequel to the KonMari Method: throw out things that do not ____.",
+    "Studies show that 50% of couples end up _______.",
+    "The solution to the crumbling economy is not ____, but _____.",
+    "What if you went to therapy, but your therapist said _____?",
+    "Do you think someone would really do that? Go on the internet and just lie about ____?",
+    "I keep trying to illegally stream movies, but getting ads for ____.",
+    "After a long day of work, I come home and am bombarded with ____.",
+    "Choose ONE of the audio conference options: Join With Computer Audio or _____.",
+    "Software developers have revealed that the option to bring an AI helper that _______ will be available soon.",
+    "I tried to not get into a fight with my aunt during Thanksgiving, but she ____.",
+    "A depression meal can be just soup, mac and cheese, and _____.",
+    "Look out frosh: the CS department just released a new intro class: Intro to ______."
     ];
         
     var themes = [ "Animals",
@@ -129,7 +169,17 @@ input {
     "Friends",
     "Ex relationships",
     "Current relationships",
-    "Fears"
+    "Fears",
+    "quarantine",
+    "2020",
+    "pet peeves",
+    "animal behavior",
+    "scandals",
+    "breakups",
+    "self-care",
+    "2020 election",
+    "covid-19",
+    "Youtube scandal"
     ];
 
     function start() {
@@ -157,7 +207,7 @@ input {
         nameInput.type = "text";
         nameInput.className = "name";
         player.appendChild(nameInput);
-        player.innerHTML = player.innerHTML + ", round: ";
+        player.innerHTML = player.innerHTML + " Score: ";
         var roundInput = document.createElement("input");
         roundInput.type = "text";
         roundInput.className = "round";
@@ -173,18 +223,18 @@ input {
 
 <body>
 <div id="container">
-    <div id="players">
-        <button id="add" onclick="addPlayer()">+ Add player</button>
-        <div class="individual">Player: <input type="text" class="name">, round: <input type="text" class="round"> </div>
-    </div>
-    <div id="card">
-        <div id="title">Sentence Factory</div>
-        <div id="sentence"></div>
-        <div id="theme"></div>
-        <button onclick="shuffle()" id="button">Generate a new sentence</button>
-    </div>
-    <div id="timer">
-        hi
+    <div id="inner-container">
+        <div id="players">
+            <button id="add" onclick="addPlayer()">+ Add player</button>
+            <div class="individual">Player: <input type="text" class="name"> Score: <input type="text" class="round"></div>
+        </div>
+        <div id="card">
+            <div id="title"></div>
+            <div id="sentence"></div>
+            <div id="theme"></div>
+            <button onclick="shuffle()" id="button">Generate a new sentence</button>
+        </div>
+      
     </div>
 </div>
 </body>
