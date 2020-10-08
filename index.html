@@ -106,74 +106,72 @@ button:hover {
     
 </style>
 <script type="text/javascript">
+
     var sentences = ["I found my _____ stuck under the _____.",
-    "My favorite way to _____  is to _____.",
-    "It’s not you, it’s _____.",
-    "Forbidden Family Feud category: _____.",
-    "Maybe the real friends were all of the _____ we made along the way.",
-    "Are you _____ or are you normal?",
-    "I like to _____ balls with my _____.",
-    "We all had to _____ and say “cheese” for _____.",
-    "My aunt wants us to _____ in the _____.",
-    "I can’t wait to _____ all over the _____.",
-    "My _____ likes to swing and _____",
-    "This morning I told my mom “I love _____”.",
-    "I sat on the _____ while doing _____.",
-    "I really wish I had _____ because _____.",
-    "We blended colors using _____.",
-    "I let my dog borrow my _____ to _____.",
-    "The fastest way to _____ is to _____.",
-    "I have to confess that I _____ while _____.",
-    "The name of Elon Musk’s next child: _____.",
-    "In addition to the pandemic and wildfires, the next 2020 phenomenon will be _____.",
-    "SHOCKING: This 23-year-old became a new homeowner by ____.",
-    "Going back in time to prank myself by _____.",
-    "This could be us, but you _____.",
-    "Who would win: 20 feral raccoons or _____?",
-    "Siri, where’s the nearest _____?",
-    "If you or a loved one was diagnosed with Mesothelioma you may be entitled to _____.",
-    "To be fair, you have to have a very high IQ to _____.",
-    "As MTL’s successor, I promise that Stanford will be ____ in the future.",
-    "Hey YouTube, welcome to my channel. As always don’t forget to like, subscribe, and ______.",
-    "I’ve gotta keep it real with you: ______ is not the solution to world hunger.",
-    "The sequel to the KonMari Method: throw out things that do not ____.",
-    "Studies show that 50% of couples end up _______.",
-    "The solution to the crumbling economy is not ____, but _____.",
-    "What if you went to therapy, but your therapist said _____?",
-    "Do you think someone would really do that? Go on the internet and just lie about ____?",
-    "I keep trying to illegally stream movies, but getting ads for ____.",
-    "After a long day of work, I come home and am bombarded with ____.",
-    "Choose ONE of the audio conference options: Join With Computer Audio or _____.",
-    "Software developers have revealed that the option to bring an AI helper that _______ will be available soon.",
-    "I tried to not get into a fight with my aunt during Thanksgiving, but she ____.",
-    "A depression meal can be just soup, mac and cheese, and _____.",
-    "Look out frosh: the CS department just released a new intro class: Intro to ______."
-    ];
-        
-    var themes = [ "Animals",
-    "Personal items (soap, toothbrush etc)",
-    "Pastimes",
-    "Family",
-    "Sports",
-    "Work",
-    "Stanford",
-    "Friends",
-    "Ex relationships",
-    "Current relationships",
-    "Fears",
-    "quarantine",
-    "2020",
-    "pet peeves",
-    "animal behavior",
-    "scandals",
-    "breakups",
-    "self-care",
-    "2020 election",
-    "covid-19",
-    "Youtube scandal"
-    ];
+        "My favorite way to _____  is to _____.",
+        "It’s not you, it’s _____.",
+        "Forbidden Family Feud category: _____.",
+        "Are you _____ or are you normal?",
+        "I like to _____ balls with my _____.",
+        "We all had to _____ and say “cheese” for _____.",
+        "My aunt wants us to _____ in the _____.",
+        "I can’t wait to _____ all over the _____.",
+        "My _____ likes to swing and _____",
+        "This morning I told my mom “I love _____”.",
+        "I sat on the _____ while doing _____.",
+        "I really wish I had _____ because _____.",
+        "I let my dog borrow my _____ to _____.",
+        "The fastest way to _____ is to _____.",
+        "You got that yummy _____",
+        "I have to confess that I _____ while _____.",
+        "My _____ brings all the boys to the _____",
+        "In addition to the pandemic and wildfires, the next 2020 phenomenon will be _____.",
+        "This could be us, but you _____.",
+        "Carole Baskin _____ her husband with _____",
+        "Who let the _____ out?",
+        "Your _____ is as good as mine",
+        "To be fair, you have to have a very high IQ to _____.",
+        "Bring a bucket and a mop for this wet _____",
+        "Give me everything you got for this _____",
+        "You used to call me on my _____ late night when you need _____",
+        "Basically, I'm saying either way, we 'bout to _____",
+        "You like my _____? Gee, thanks, just bought it",
+        "Hey YouTube, welcome to my channel. As always don’t forget to like, subscribe, and ______.",
+        "I’ve gotta keep it real with you: ______ is not the solution to world hunger.",
+        "Studies show that 50% of couples end up _______.",
+        "What if you went to therapy, but your therapist said _____?",
+        "Do you think someone would really do that? Go on the internet and just lie about ____?",
+        "I keep trying to illegally stream movies, but getting ads for ____.",
+        "After a long day of work, I come home and am bombarded with ____.",
+        "Choose ONE of the audio conference options: Join With Computer Audio or _____.",
+        "Software developers have revealed that the option to bring an AI helper that _______ will be available soon.",
+        "I tried to not get into a fight with my aunt during Thanksgiving, but she ____.",
+        "A depression meal can be just soup, mac and cheese, and _____."
+    ];
+        
+    var themes = [ "Animals",
+        "Pastimes",
+        "Family",
+        "Sports",
+        "Work",
+        "Stanford",
+        "Friends",
+        "Ex relationships",
+        "Current relationships",
+        "Fears",
+        "quarantine",
+        "2020",
+        "pet peeves",
+        "animal behavior",
+        "scandals",
+        "self-care",
+        "2020 election",
+        "covid-19",
+        "Youtube scandal"
+    ];
 
     let timerInterval = null;
+    let shuffleCount = 0; // shuffleCount is used to rig the second generate call
 
     function formatTime(timeleft, display) {
         let timeleftStr = timeleft.toString();
@@ -193,10 +191,15 @@ button:hover {
     }
     
     function shuffle() {
+        shuffleCount += 1;
+        let sentencesIndex = Math.floor(Math.random() * sentences.length);
+        if (shuffleCount === 3) {
+            sentencesIndex = 24;
+        }
         if (timerInterval != null) clearInterval(timerInterval);
         var sentence = document.getElementById("sentence");
         var theme = document.getElementById("theme");
-        var sCurr = sentences[Math.floor(Math.random() * sentences.length)];
+        var sCurr = sentences[sentencesIndex];
         var tCurr = themes[Math.floor(Math.random() * themes.length)];
         sentence.innerHTML = sCurr;
         theme.innerHTML = "Theme: " + tCurr;
